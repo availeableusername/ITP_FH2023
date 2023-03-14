@@ -5,21 +5,23 @@
   flex-direction: column;
   height: 100%;
   background-size: cover;
-  background-color: #deb887;
+  background-color: #f5de9d;
 }
 
 .dark {
   filter: invert()
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
 
 html {
   height: 100%;
 }
 
 * {
-  font-family: 'Russo One', sans-serif !important;
+  font-family: 'Amatic SC', cursive !important;
+  font-size: 104%;
 }
 
 #root {

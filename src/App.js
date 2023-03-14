@@ -4,15 +4,16 @@ import { useState } from 'react';
 import { createTheme } from '@mui/material';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import About from './sections/About';
+import Home from './sections/Home';
 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0c343d  '
+      main: '#763408'
     },
     secondary: {
-      main: '#45818e'
+      main: '#f3c23a'
     },
   }
 });
@@ -44,9 +45,9 @@ function App() {
             </Button>
 
           </AppBar>
-          <Grid display={"flex"} justifyContent={"center"} width="100%" >
+          <Grid display={"flex"} justifyContent={"center"} alignItems='center' width="100%" height={'100%'} >
             <Routes>
-              <Route exact path="/" element={<p>home</p>
+              <Route exact path="/" element={<Home></Home>
               } />
               <Route path="/page" element={<p>page 2</p>
               } />
