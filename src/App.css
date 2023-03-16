@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100%;
   background-size: cover;
   background-color: #f5de9d;
 }
@@ -93,6 +92,11 @@ a {
 }
 
 @media only screen and (max-width: 888px) {
+
+  * {
+    font-size: 101%;
+  }
+
   .App {
     flex-direction: column;
   }
