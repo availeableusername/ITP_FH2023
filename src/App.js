@@ -5,6 +5,8 @@ import { createTheme } from '@mui/material';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import About from './sections/About';
 import Home from './sections/Home';
+import Login from './sections/Login';
+import Register from './sections/Register';
 
 
 const theme = createTheme({
@@ -40,6 +42,8 @@ function App() {
             <Link style={{ color: '#f5f7f9' }} to="/" >Home</Link>
             <Link style={{ color: '#f5f7f9' }} to="/page" >page</Link>
             <Link style={{ color: '#f5f7f9' }} to="/about">About us</Link>
+            <Link style={{ color: '#f5f7f9' }} to="/login">Login</Link>
+            <Link style={{ color: '#f5f7f9' }} to="/register">Register</Link>
             <Button variant='contained' color='secondary' onClick={handleClick}>
               {ModusB ? "light" : "dark"}
             </Button>
@@ -52,6 +56,10 @@ function App() {
               <Route path="/page" element={<p>page 2</p>
               } />
               <Route path="/about" element={<About />
+              } />
+              <Route path="/login" element={<Login />
+              } />
+              <Route path="/register" element={<Register />
               } />
             </Routes>
           </Grid>
