@@ -7,6 +7,7 @@ import About from './sections/About';
 import Home from './sections/Home';
 import Login from './sections/Login';
 import Register from './sections/Register';
+import Menu from './sections/Menu';
 
 
 const theme = createTheme({
@@ -40,7 +41,7 @@ function App() {
         <BrowserRouter>
           <AppBar position='sticky' color='primary' sx={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center", p: "1rem" }}>
             <Link style={{ color: '#f5f7f9' }} to="/" >Home</Link>
-            <Link style={{ color: '#f5f7f9' }} to="/page" >page</Link>
+            <Link style={{ color: '#f5f7f9' }} to="/menu" >Menu</Link>
             <Link style={{ color: '#f5f7f9' }} to="/about">About us</Link>
             <Link style={{ color: '#f5f7f9' }} to="/login">Login</Link>
             <Link style={{ color: '#f5f7f9' }} to="/register">Register</Link>
@@ -53,7 +54,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home></Home>
               } />
-              <Route path="/page" element={<p>page 2</p>
+              <Route path="/menu" element={<Menu />
               } />
               <Route path="/about" element={<About />
               } />
