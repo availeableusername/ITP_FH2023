@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Apr 2023 um 11:38
+-- Erstellungszeit: 23. Mai 2023 um 13:49
 -- Server-Version: 10.4.25-MariaDB
 -- PHP-Version: 8.1.10
 
@@ -43,8 +43,26 @@ CREATE TABLE `orders` (
 CREATE TABLE `products` (
   `productID` int(10) NOT NULL,
   `productName` varchar(20) NOT NULL,
-  `price` int(10) NOT NULL
+  `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `products`
+--
+
+INSERT INTO `products` (`productID`, `productName`, `price`) VALUES
+(1, 'Chickenbox', 7.3),
+(2, 'Chickenwings', 9.3),
+(3, 'Chickennuggets', 5.3),
+(4, 'Chickenburger', 11.3),
+(5, 'Chickenburger Double', 16.3),
+(6, 'Chickenbucket', 19.9),
+(8, 'Fries', 3.3),
+(9, 'Burger Fries', 4.3),
+(10, 'Cola', 3),
+(11, 'Almdudler', 3),
+(12, 'Frucade', 3),
+(13, 'Water', 1.5);
 
 -- --------------------------------------------------------
 
@@ -99,7 +117,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT für Tabelle `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
