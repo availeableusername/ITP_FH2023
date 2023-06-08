@@ -1,6 +1,6 @@
 import { AppBar, Button, Grid, ThemeProvider } from '@mui/material';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createTheme } from '@mui/material';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import About from './sections/About';
@@ -24,7 +24,13 @@ const theme = createTheme({
 
 
 function App() {
-
+  const [data, setData] = useState([])
+  useEffect(()=>{                         //nur zum Testen ob Backend Anbindung funktioniert
+    fetch('http://localhost:3050/user')
+    .then(res => res.json())
+    .then(data => setData(data))
+    .catch(err => console.log(err));
+  }, [])
 
   const [ModusB, setModusB] = useState(true)
 
