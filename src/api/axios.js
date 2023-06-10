@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'http://localhost:3500'  //URL ändern auf Backend, geändert von 3000 auf 4000
+    baseURL: 'http://localhost:3050'  //URL ändern auf Backend, geändert von 3000 auf 3050
 })
 
 const getData = () =>{

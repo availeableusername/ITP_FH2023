@@ -25,10 +25,11 @@ const theme = createTheme({
 
 function App() {
   const [data, setData] = useState([])
-  useEffect(()=>{                         //nur zum Testen ob Backend Anbindung funktioniert
+  useEffect(()=>{                         
     fetch('http://localhost:3050/user')
     .then(res => res.json())
-    .then(data => setData(data))
+    //.then(data => setData(data))        //korrekte Implementierung
+    .then(data => console.log(data))      //nur zum Testen ob Backend Anbindung funktioniert
     .catch(err => console.log(err));
   }, [])
 
