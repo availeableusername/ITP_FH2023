@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -6,13 +7,20 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await axios.post('http://localhost:3050/register', {firstName, lastName, email, password})
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    axios.get('http://localhost:3050/user')
+    .then(res => console.log(res));
     // Hier kannst du die Registrierungs-Logik implementieren, z.B. eine API-Anfrage senden oder Benutzerdaten speichern
-    console.log('First Name:', firstName);
+
+    /*console.log('First Name:', firstName);
     console.log('Last Name:', lastName);
     console.log('Email:', email);
-    console.log('Password:', password);
+    console.log('Password:', password); */
+
     // Zurücksetzen der Formulardaten
     setFirstName('');
     setLastName('');

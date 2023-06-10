@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Mai 2023 um 13:49
+-- Erstellungszeit: 08. Jun 2023 um 16:21
 -- Server-Version: 10.4.25-MariaDB
 -- PHP-Version: 8.1.10
 
@@ -72,12 +72,18 @@ INSERT INTO `products` (`productID`, `productName`, `price`) VALUES
 
 CREATE TABLE `user` (
   `userID` int(10) NOT NULL,
-  `user` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`userID`, `user`, `password`, `email`, `firstname`, `lastname`) VALUES
+(1, 'test', 'test@test.com', 'Test', 'Test');
 
 --
 -- Indizes der exportierten Tabellen
@@ -117,13 +123,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT für Tabelle `products`
 --
 ALTER TABLE `products`
-  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `productID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints der exportierten Tabellen
