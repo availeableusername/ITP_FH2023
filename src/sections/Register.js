@@ -14,7 +14,6 @@ const Register = () => {
     .catch(err => console.log(err));
     axios.get('http://localhost:3050/user')
     .then(res => console.log(res));
-    // Hier kannst du die Registrierungs-Logik implementieren, z.B. eine API-Anfrage senden oder Benutzerdaten speichern
 
     /*console.log('First Name:', firstName);
     console.log('Last Name:', lastName);
