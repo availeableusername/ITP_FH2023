@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Jun 2023 um 16:21
+-- Erstellungszeit: 27. Jun 2023 um 12:27
 -- Server-Version: 10.4.25-MariaDB
 -- PHP-Version: 8.1.10
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `orders` (
-  `ID` int(10) NOT NULL,
-  `oderID` int(10) NOT NULL,
+  `orderID` int(10) NOT NULL,
   `userID` int(10) NOT NULL,
-  `productID` int(10) NOT NULL
+  `productID` int(10) NOT NULL,
+  `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,18 +51,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productID`, `productName`, `price`) VALUES
-(1, 'Chickenbox', 7.3),
-(2, 'Chickenwings', 9.3),
-(3, 'Chickennuggets', 5.3),
-(4, 'Chickenburger', 11.3),
-(5, 'Chickenburger Double', 16.3),
-(6, 'Chickenbucket', 19.9),
-(8, 'Fries', 3.3),
-(9, 'Burger Fries', 4.3),
-(10, 'Cola', 3),
-(11, 'Almdudler', 3),
-(12, 'Frucade', 3),
-(13, 'Water', 1.5);
+(1, 'menuOne', 29.99),
+(2, 'menuTwo', 23.99),
+(3, 'menuThree', 19.99),
+(4, 'menuFour', 12.99);
 
 -- --------------------------------------------------------
 
@@ -82,8 +74,10 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`userID`, `user`, `password`, `email`, `firstname`, `lastname`) VALUES
-(1, 'test', 'test@test.com', 'Test', 'Test');
+INSERT INTO `user` (`userID`, `password`, `email`, `firstname`, `lastname`) VALUES
+(1, 'test', 'test@test.com', 'Test', 'Test'),
+(2, '123', 'a@a.at', 'johannes', 'test'),
+(3, '123', 'test@test.com', 'hallo', 'ein');
 
 --
 -- Indizes der exportierten Tabellen
@@ -93,7 +87,7 @@ INSERT INTO `user` (`userID`, `user`, `password`, `email`, `firstname`, `lastnam
 -- Indizes für die Tabelle `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`orderID`),
   ADD KEY `userID` (`userID`),
   ADD KEY `productID` (`productID`);
 
@@ -117,7 +111,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `products`
@@ -129,7 +123,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints der exportierten Tabellen
