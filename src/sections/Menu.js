@@ -12,75 +12,56 @@ export default function Menu() {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
+        const id = event.target.id;
+        setInputs(values => ({...values, [name]: inputs}));
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:4000/api/user/save', inputs);
+        axios.post('http://localhost:3050/menu', inputs); //'http://localhost:4000/api/user/save' http://localhost:3050/user/save
         console.log(inputs);
 
-    }
+    }                     //Menü auf 3 Pakete aufgeteilt, einfacher für die DB
   return (
     
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>      
         <h3>
             Choose from our Menu! Bon Appetit!
         </h3>
     <div>
-        <label htmlFor="chickenbox">Chickenbox 7,30€</label>
+        <label htmlFor="menuOne">Menu 1: Chickenbox, Chickenwings, Chickenburger, Chickennuggets, 3x Fries, Cola, Water 29,99€</label>
         <input
           type="checkbox"
-          name="chickenbox"
+          name="menuOne"
+          id="1"
           onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="chickenwings">Chickenwings 9,30€</label>
+        <label htmlFor="menuTwo">Menu 2: Chickenbox, Double Chickenburger, Chickenburger, 1x Fries, 2xCola, 2xWater 23,99€</label>
         <input
           type="checkbox"
-          name="chickenwings"
+          name="menuTwo"
+          id="2"
           onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="chickennuggets">Chickennuggets 6x 5,30€</label>
+        <label htmlFor="menuThree">Menu 3: Chickennuggets, Chickenwings, Chickenbox, 3x Fries, Cola, Water 19,99€</label>
         <input
           type="checkbox"
-          name="chickennuggets"
+          name="menuThree"
+          id="3"
           onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="chickenburger">Chickenburger 11,30€</label>
+        <label htmlFor="menuFour">Menu 4: Chickenburger, 1x Fries, Cola 12,99€</label>
         <input
           type="checkbox"
-          name="chickenburger"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="chickenburgerdouble">Chickenburger Double 16,30€</label>
-        <input
-          type="checkbox"
-          name="chickenburgerdouble"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="fries">Fries 3,30€</label>
-        <input
-          type="checkbox"
-          name="fries"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="cola">Cola 3,00€</label>
-        <input
-          type="checkbox"
-          name="cola"
+          name="menuFour"
+          id="4"
           onChange={handleChange}
         />
       </div>
