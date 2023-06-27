@@ -19,9 +19,9 @@ export default function Menu() {      //export default function Menu() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-       await axios.post('http://localhost:3050/menu', inputs); //'http://localhost:4000/api/user/save' http://localhost:3050/user/save
+       await axios.post('http://localhost:3050/menu', {inputs}); //'http://localhost:4000/api/user/save' http://localhost:3050/user/save
         console.log(inputs);
-        setInputs('');
+        //setInputs('');
 
     }                     //Menü auf 3 Pakete aufgeteilt, einfacher für die DB
 
