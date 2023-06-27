@@ -1,4 +1,4 @@
-import { Checkbox } from '@mui/material'
+import { Box, Grid, Typography, FormControlLabel, Checkbox, Button } from '@mui/material';
 import React, {useState, useRef} from 'react'
 import axios from 'axios'
 
@@ -24,58 +24,61 @@ export default function Menu() {      //export default function Menu() {
         setInputs('');
 
     }                     //Menü auf 3 Pakete aufgeteilt, einfacher für die DB
+
   return (
     
-    <form onSubmit={handleSubmit}>      
-        <h3>
-            Choose from our Menu! Bon Appetit!
+  <form onSubmit={handleSubmit}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', backgroundColor: '#f3c23a' }}>
+      <div style={{ width: '90%', maxWidth: '900px', margin: '0 auto', color: '#000', textAlign: 'center' }}>
+        <h3 style={{ marginBottom: '1rem', fontSize: '2.5rem', marginTop: '0' }}>
+          Choose from our Menu! Bon Appetit!
         </h3>
-    <div>
-        <label htmlFor="menuOne">Menu 1: Chickenbox, Chickenwings, Chickenburger, Chickennuggets, 3x Fries, Cola, Water 29,99€</label>
-        <input
-          type="checkbox"
-          name="menuOne"
-          id="1"
-          value={'1'}
-          onChange={(e) => setInputs(e.target.value)}
-          //onChange={(e) => setFirstName(e.target.value)}
-        />
+        <div style={{ marginTop: '1rem' }}>
+          <label htmlFor="menuOne">Menu 1: Chickenbox, Chickenwings, Chickenburger, Chickennuggets, 3x Fries, Cola, Water 29,99€</label>
+          <input
+            type="checkbox"
+            name="menuOne"
+            id="1"
+            value={'1'}
+            onChange={(e) => setInputs(e.target.value)}
+          />
+        </div>
+        <div style={{ marginTop: '1rem' }}>
+          <label htmlFor="menuTwo">Menu 2: Chickenbox, Double Chickenburger, Chickenburger, 1x Fries, 2xCola, 2xWater 23,99€</label>
+          <input
+            type="checkbox"
+            name="menuTwo"
+            id="2"
+            value={'2'}
+            onChange={(e) => setInputs(e.target.value)}
+          />
+        </div>
+        <div style={{ marginTop: '1rem' }}>
+          <label htmlFor="menuThree">Menu 3: Chickennuggets, Chickenwings, Chickenbox, 3x Fries, Cola, Water 19,99€</label>
+          <input
+            type="checkbox"
+            name="menuThree"
+            id="3"
+            value={3}
+            onChange={(e) => setInputs(e.target.value)}
+          />
+        </div>
+        <div style={{ marginTop: '1rem' }}>
+          <label htmlFor="menuFour">Menu 4: Chickenburger, 1x Fries, Cola 12,99€</label>
+          <input
+            type="checkbox"
+            name="menuFour"
+            id="4"
+            value={4}
+            onChange={(e) => setInputs(e.target.value)}
+          />
+        </div>
+        <button style={{ marginTop: '1rem' }}>Order now!</button>
       </div>
-      <div>
-        <label htmlFor="menuTwo">Menu 2: Chickenbox, Double Chickenburger, Chickenburger, 1x Fries, 2xCola, 2xWater 23,99€</label>
-        <input
-          type="checkbox"
-          name="menuTwo"
-          id="2"
-          value={'2'}
-          onChange={(e) => setInputs(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="menuThree">Menu 3: Chickennuggets, Chickenwings, Chickenbox, 3x Fries, Cola, Water 19,99€</label>
-        <input
-          type="checkbox"
-          name="menuThree"
-          id="3"
-          value={3}
-          onChange={(e) => setInputs(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="menuFour">Menu 4: Chickenburger, 1x Fries, Cola 12,99€</label>
-        <input
-          type="checkbox"
-          name="menuFour"
-          id="4"
-          value={4}
-          onChange={(e) => setInputs(e.target.value)}
-        />
-      </div>
-      <button>Order now!</button>
-      </form>
+    </div>
+  </form>
 
-    
-    
   )
+
 }
 
