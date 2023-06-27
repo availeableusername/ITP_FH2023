@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 27. Jun 2023 um 12:27
+-- Erstellungszeit: 27. Jun 2023 um 18:02
 -- Server-Version: 10.4.25-MariaDB
 -- PHP-Version: 8.1.10
 
@@ -33,6 +33,18 @@ CREATE TABLE `orders` (
   `productID` int(10) NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `userID`, `productID`, `Date`) VALUES
+(1, 1, 1, '2023-06-02'),
+(2, 2, 1, '2023-06-05'),
+(3, 4, 2, '2023-06-05'),
+(9, 1, 2, '2023-06-27'),
+(10, 4, 1, '2023-06-27'),
+(11, 1, 1, '2023-06-27');
 
 -- --------------------------------------------------------
 
@@ -77,7 +89,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`userID`, `password`, `email`, `firstname`, `lastname`) VALUES
 (1, 'test', 'test@test.com', 'Test', 'Test'),
 (2, '123', 'a@a.at', 'johannes', 'test'),
-(3, '123', 'test@test.com', 'hallo', 'ein');
+(4, '123', 'zwei@a.com', 'hallo', 'ein');
 
 --
 -- Indizes der exportierten Tabellen
@@ -111,7 +123,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `products`
@@ -123,7 +135,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints der exportierten Tabellen
