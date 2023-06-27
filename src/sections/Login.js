@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../context/AuthProvider';
-//import axios from '../api/axios';
+import { Box, Typography, Grid, TextField, Button } from '@mui/material';
 import axios from 'axios';
 
 const Login_URL = '/auth'; //muss im Backend noch gecoded werden, soll sich dann an die Base_URL im axios.js File anhängen
@@ -27,32 +27,61 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f5de9d',
+      }}
+    >
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: 400,
+          p: 3,
+          backgroundColor: '#fff',
+          borderRadius: 4,
+        }}
+        onSubmit={handleSubmit}
+      >
+        <Typography variant="h4" align="center" gutterBottom>
+          Login
+        </Typography>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={12}>
+            <TextField
+              label="Email"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Password"
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+          Login
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
