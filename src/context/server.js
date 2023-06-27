@@ -7,6 +7,8 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+let email;
+let userID;
 
 app.use(session({
   secret : 'pass',
@@ -36,7 +38,9 @@ app.post('/login', (req, res) => {
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) return res.json('Login failed');
     if (data.length > 0) {
-      return res.json('Login successful');
+      email = email
+      userID = userID
+      return res.json("Login successful");
     } else {
       return res.json('Password or email wrong');
     }
@@ -88,6 +92,24 @@ app.post("/login", (req, res) =>{
   }
   res.send(200);
 });
+
+app.post('/menu', (req, res) =>{
+  const sql = 'INSERT INTO orders (userID, productID, Date) VALUES (?)';
+  console.log(userID)
+  const values = [
+    userID,
+    req.id,
+    Date.now(),
+  ];
+
+  db.query(sql, [values], (err, data) => {
+    if (err) {
+      return res.json('Error');
+    }
+    return res.json(data);
+  });
+
+})
 
 app.listen(3050, () => {
   console.log('Server listening on port 3050');
