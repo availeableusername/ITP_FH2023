@@ -36,12 +36,11 @@ app.get('/user', (req, res) => {
 
 app.post('/login', (req, res) => {
   const sql = 'SELECT * FROM user WHERE email = ? AND password = ?';
-  const userData = []
 
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) return res.json('Login failed');
     if (data.length > 0) {
-      return res.json(data);
+      return res.json("Login successufl");
     } else {
       return res.json('Password or email wrong');
     }
@@ -122,17 +121,17 @@ app.post("/login", (req, res) =>{
 
 app.post('/menu', (req, res) =>{
   const sql = 'INSERT INTO orders (userID, productID, Date) VALUES (?)';
-  console.log(req.body.inputs)
-  var date = Date.now()
+ // console.log(req.body.inputs)
+  var datetime = new Date();
+  //console.log(datetime);
   const values = [
     1,
-    req.inputs,
-    Date.now(),
+    req.body.inputs,
+    datetime,
   ];
 
   db.query(sql, [values], (err, data) => {
     if (err) {
-      console.log(userArray)
       return res.json('Error');
     }
     return res.json(data);
