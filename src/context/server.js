@@ -3,12 +3,14 @@ const mysql = require('mysql');
 const session = require('express-session');
 const store = new session.MemoryStore();
 const cors = require('cors');
+var router = express.Router()
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-let email;
-let userID;
+//let email;
+//let userID;
+var userArray;
 
 app.use(session({
   secret : 'pass',
@@ -34,18 +36,43 @@ app.get('/user', (req, res) => {
 
 app.post('/login', (req, res) => {
   const sql = 'SELECT * FROM user WHERE email = ? AND password = ?';
+  const userData = []
 
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
     if (err) return res.json('Login failed');
     if (data.length > 0) {
-      email = email
-      userID = userID
-      return res.json("Login successful");
+      return res.json(data);
     } else {
       return res.json('Password or email wrong');
     }
   });
 });
+
+app.post('/post', (req, res) =>{
+  const fetchbyemail=req.params.email;
+  db.query('SELECT userID from user WHERE email = ?', fetchbyemail,(err, res))
+  if (err) return res.json(err);
+    var value = JSON.pars(JSON.stringify(res))
+    userArray = value
+    return console.log(value);
+
+  sql = 'SELECT userID from user WHERE email = ?';
+  db.query(sql, [req.body.email], (err, data) => {
+    
+  })
+})
+
+router.post('/login', (req, res) => {
+  connection.query('SELECT * FROM users WHERE email = ?', function (err, rows) {
+    if (err) {
+      req.flash('error', err)
+      res.render('profile', { data: '' })
+    } else {
+      res.render('profile', { data: rows })
+    }
+  })
+})
+module.exports = router
 
 app.post('/register', (req, res) => {
   const sql = 'INSERT INTO user (firstname, lastname, email, password) VALUES (?)';
@@ -95,15 +122,17 @@ app.post("/login", (req, res) =>{
 
 app.post('/menu', (req, res) =>{
   const sql = 'INSERT INTO orders (userID, productID, Date) VALUES (?)';
-  console.log(userID)
+  console.log(req.body.inputs)
+  var date = Date.now()
   const values = [
-    userID,
-    req.id,
+    1,
+    req.inputs,
     Date.now(),
   ];
 
   db.query(sql, [values], (err, data) => {
     if (err) {
+      console.log(userArray)
       return res.json('Error');
     }
     return res.json(data);
