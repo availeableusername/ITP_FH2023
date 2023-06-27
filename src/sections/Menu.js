@@ -5,22 +5,23 @@ import axios from 'axios'
 //import axios from './api/axios'
 //const Login_URL='/auth';
 
-export default function Menu() {
+export default function Menu() {      //export default function Menu() {
 
-    const [inputs, setInputs] = useState({})
+    const [inputs, setInputs] = useState('');      // const [inputs, setInputs] = useState({})
     
-    const handleChange = (event) => {
+    /*const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         const id = event.target.id;
-        setInputs(values => ({...values, [name]: inputs}));
-    }
+        setInputs(values => ({...values, [id]: inputs}));     //setInputs(values => ({...values, [id]: inputs}));
+    } */
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        axios.post('http://localhost:3050/menu', inputs); //'http://localhost:4000/api/user/save' http://localhost:3050/user/save
+       await axios.post('http://localhost:3050/menu', inputs); //'http://localhost:4000/api/user/save' http://localhost:3050/user/save
         console.log(inputs);
+        setInputs('');
 
     }                     //Menü auf 3 Pakete aufgeteilt, einfacher für die DB
   return (
@@ -35,7 +36,9 @@ export default function Menu() {
           type="checkbox"
           name="menuOne"
           id="1"
-          onChange={handleChange}
+          value={'1'}
+          onChange={(e) => setInputs(e.target.value)}
+          //onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
       <div>
@@ -44,7 +47,8 @@ export default function Menu() {
           type="checkbox"
           name="menuTwo"
           id="2"
-          onChange={handleChange}
+          value={'2'}
+          onChange={(e) => setInputs(e.target.value)}
         />
       </div>
       <div>
@@ -53,7 +57,8 @@ export default function Menu() {
           type="checkbox"
           name="menuThree"
           id="3"
-          onChange={handleChange}
+          value={3}
+          onChange={(e) => setInputs(e.target.value)}
         />
       </div>
       <div>
@@ -62,7 +67,8 @@ export default function Menu() {
           type="checkbox"
           name="menuFour"
           id="4"
-          onChange={handleChange}
+          value={4}
+          onChange={(e) => setInputs(e.target.value)}
         />
       </div>
       <button>Order now!</button>
